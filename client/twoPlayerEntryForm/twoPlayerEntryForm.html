@@ -1,0 +1,21 @@
+<div class="2-p-entry-form" ng-show="$ctrl.isShowForm">
+    <form class="2-p-entry-form__form" ng-submit="onSubmit()">
+
+        <h3 class="2-p-entry-form__label">
+            Player 1:
+        </h3>
+        <input type="text" class="2-p-entry-form__input"
+               ng-model="p1Name">
+
+        <h3 class="2-p-entry-form__label">
+            Player 2:
+        </h3>
+        <input type="text" class="2-p-entry-form__input"
+               ng-model="p2Name">
+
+        <button type="submit" class="2-p-entry-form__btn-submit">
+            Start
+        </button>
+
+    </form>
+</div>
