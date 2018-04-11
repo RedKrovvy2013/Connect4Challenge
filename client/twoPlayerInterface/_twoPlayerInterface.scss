@@ -1,2 +1,12 @@
 
-// filler
+.2-p-interface {
+
+    @include frost;
+    display: flex;
+    justify-content: space-between;
+
+    &__side {
+        
+    }
+
+}

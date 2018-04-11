@@ -1,0 +1,6 @@
+
+.c4-board {
+
+    height: $grid-width * (6/7);
+    @include frost;
+}
