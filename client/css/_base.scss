@@ -14,9 +14,10 @@ html {
 
 body {
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Black Han Sans', sans-serif;
     font-size: $p-size;
-
+    background: url(bg.jpg) center center;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 input, select, textarea, button {
     font-family: inherit;

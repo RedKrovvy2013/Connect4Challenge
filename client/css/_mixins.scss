@@ -8,6 +8,36 @@
 }
 
 @mixin frost {
-    background-color: white;
-    opacity: 0.5;
+    background-color: rgba(255, 255, 255, .5);
+}
+
+@mixin grey-gradient {
+    background-image: linear-gradient(to bottom, $grey-straight 0%,
+                                          $grey-mid 49%,
+                                          $grey-highlight 49%,
+                                          $grey-highlight 50%,
+                                          $grey-mid 50%,
+                                          $grey-dark 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+@mixin blue-gradient {
+    @include grey-gradient;
+    background-image: linear-gradient(to bottom, $blue-straight 0%,
+                                          $blue-mid 49%,
+                                          $blue-highlight 49%,
+                                          $blue-highlight 50%,
+                                          $blue-mid 50%,
+                                          $blue-dark 100%);
+}
+
+@mixin red-gradient {
+    @include grey-gradient;
+    background-image: linear-gradient(to bottom, $red-straight 0%,
+                                          $red-mid 49%,
+                                          $red-highlight 49%,
+                                          $red-highlight 50%,
+                                          $red-mid 50%,
+                                          $red-dark 100%);
 }

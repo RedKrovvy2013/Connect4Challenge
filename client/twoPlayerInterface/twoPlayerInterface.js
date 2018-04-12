@@ -5,7 +5,7 @@ function Connect4TwoPlayerInterfaceController(Connect4) {
     };
 }
 
-angular.module('app').directive('twoPlayerInterface', function() {
+angular.module('app').directive('twoPlayerInterface', function($timeout) {
     return {
         restrict: 'E',
         scope: {},
@@ -16,6 +16,10 @@ angular.module('app').directive('twoPlayerInterface', function() {
             $scope.onMove = function() {
                 ctrl.move($scope.coord);
             };
+
+            // $timeout(function() {
+            //     $scope.isDisabled = true;
+            // }, 2000);
         }
     };
 });

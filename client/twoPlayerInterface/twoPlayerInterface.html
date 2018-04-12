@@ -1,16 +1,22 @@
-<div class="2-p-interface">
-    <input type="text" ng-model="coord">
+<div class="two-p-interface">
+    <!-- <input type="text" ng-model="coord">
     <button ng-click="onMove()">
         Move
-    </button>
-    <div class="2-p-interface__p1-side">
-        <h2 class="2-p-interface__p1-side-label">
-            {{$ctrl.p1Name}}
-        </h2>
+    </button> -->
+    <div class="two-p-interface__side two-p-interface__side--red">
+        <h1 ng-class="{'two-p-interface__label': true,
+                       'two-p-interface__label--red': true,
+                       'two-p-interface__label--red-disabled': isDisabled}">
+                <!-- {{$ctrl.p1Name}} -->
+                Jen
+            </h1>
     </div>
-    <div class="2-p-interface__p2-side">
-        <h2 class="2-p-interface__p2-side-label">
-            {{$ctrl.p2Name}}
-        </h2>
+    <div class="two-p-interface__side two-p-interface__side--blue">
+            <h1 ng-class="{'two-p-interface__label': true,
+                           'two-p-interface__label--blue': true,
+                           'two-p-interface__label--blue-disabled': isDisabled}">
+                <!-- {{$ctrl.p2Name}} -->
+                Mike
+            </h1>
     </div>
 </div>

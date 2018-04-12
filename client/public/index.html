@@ -4,55 +4,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
         <link rel="stylesheet" href="styles/style.css">
     </head>
     <body>
 
         <!-- <two-player-entry-form></two-player-entry-form> -->
-        <!-- <two-player-interface></two-player-interface> -->
-
-        <!-- <div class="2-p-entry-form" ng-show="$ctrl.isShowForm">
-            <form class="2-p-entry-form__form" ng-submit="onSubmit()">
-
-                <h3 class="2-p-entry-form__label">
-                    Player 1:
-                </h3>
-                <input type="text" class="2-p-entry-form__input"
-                       ng-model="p1Name">
-
-                <h3 class="2-p-entry-form__label">
-                    Player 2:
-                </h3>
-                <input type="text" class="2-p-entry-form__input"
-                       ng-model="p2Name">
-
-                <button type="submit" class="2-p-entry-form__btn-submit">
-                    Start
-                </button>
-
-            </form>
-        </div> -->
 
         <div class="c4-board"></div>
 
-        <!-- <input type="text" ng-model="coord">
-        <button ng-click="onMove()">
-            Move
-        </button> -->
-        <div class="2-p-interface">
-            <div class="2-p-interface__side 2-p-interface__side--red">
-                <h2 class="2-p-interface__label 2-p-interface__label--red">
-                    <!-- {{$ctrl.p1Name}} -->
-                    Jen
-                </h2>
-            </div>
-            <div class="2-p-interface__side 2-p-interface__side--blue">
-                <h2 class="2-p-interface__label 2-p-interface__label--blue">
-                    <!-- {{$ctrl.p2Name}} -->
-                    Mike
-                </h2>
-            </div>
-        </div>
+        <two-player-interface></two-player-interface>
 
         <script src='bundle.js'></script>
 

@@ -1,12 +1,35 @@
 
-.2-p-interface {
+.two-p-interface {
 
-    @include frost;
-    display: flex;
-    justify-content: space-between;
+    width: $board-width;
 
     &__side {
-        
+
+        @include frost;
+
+        height: $cell-height * 1.2;
+
+        $gutter-width: $cell-height * .5;
+        float: left;
+        width: calc( ( 100% - #{$gutter-width} ) / 2 );
+        &:first-child {
+            margin-right: $gutter-width;
+        }
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    &__label--blue {
+        @include blue-gradient;
+    }
+    &__label--red {
+        @include red-gradient;
+    }
+    &__label--blue-disabled, &__label--red-disabled {
+        @include grey-gradient;
     }
 
 }

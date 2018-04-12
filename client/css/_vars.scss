@@ -1,11 +1,30 @@
 
 $p-size: 1.6rem;
-$h1-size: $p-size * 2.35;
+$h1-size: $p-size * 3.25;
 $h2-size: $p-size * 2;
 $h3-size: $p-size * 1.7;
 $h4-size: $p-size * 1.4;
 $h5-size: $p-size * 1.2;
 
-$board-width: 120rem;
+$board-width: 70rem;
 $board-height: $board-width * (6/7);
 $cell-height: $board-height / 6;
+
+$blue-straight: #2037FF;
+$blue-mid: #1520A8;
+$blue-dark: #0A084D;
+$blue-highlight: #7271FF;
+
+$red-straight: #F03030;
+$red-mid: #921B1B;
+$red-dark: #2E0404;
+$red-highlight: #D00000;
+
+$grey-straight: #909090;
+$grey-mid: #5F5F5F;
+$grey-dark: #2F2F2F;
+$grey-highlight: #9F9F9F;
+
+$btn-light: #FFFFFF;
+$btn-dark: #353535;
+$btn-stroke-color: #000000;
