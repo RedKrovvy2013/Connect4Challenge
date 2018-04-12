@@ -20,6 +20,9 @@ angular.module('app').directive('twoPlayerInterface', function($timeout) {
             // $timeout(function() {
             //     $scope.isDisabled = true;
             // }, 2000);
+
+            
+
         }
     };
 });

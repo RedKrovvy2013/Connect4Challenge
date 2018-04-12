@@ -11,7 +11,8 @@ angular.module('app').service('Game', function() {
         this.isPlaying = true;
         this.isPreGame = false;
     };
-    this.handleGameWinner = (winnerName) => {
+    this.handleWinGame = (winnerName) => {
+        console.log(`${winnerName} wins!`);
         this.isPlaying = false;
         this.isPostGame = true;
     };
