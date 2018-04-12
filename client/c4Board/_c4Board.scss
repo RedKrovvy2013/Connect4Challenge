@@ -2,6 +2,7 @@
 .c4-board {
 
     margin-bottom: $cell-height * .25;
+    cursor: pointer;
 
     &__backing {
         fill: $frost-color;
@@ -9,6 +10,13 @@
 
     &__mask-bg {
         fill: white;
+    }
+
+    &__coin--p1 {
+        fill: $red-straight;
+    }
+    &__coin--p2 {
+        fill: $blue-straight;
     }
 
 }

@@ -5,7 +5,7 @@ var app = angular.module('app', []);
 
 require('./c4Board/c4Board');
 require('./twoPlayerEntryForm/twoPlayerEntryForm');
-require('./twoPlayerInterface/twoPlayerInterface');
+require('./twoPlayerTurnDisplay/twoPlayerTurnDisplay');
 
 require('./game/game');
 require('./game/connect4');

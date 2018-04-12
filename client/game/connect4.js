@@ -4,7 +4,7 @@ angular.module('app').service('Connect4', function(Game) {
     this.p1Name = '';
     this.p2Name = '';
     this.board = []; // ..becomes multidimensional array
-    this.activePlayer = 0;
+    this.activePlayer = 1;
     this.init = (p1Name, p2Name) => {
         this.p1Name = p1Name;
         this.p2Name = p2Name;
@@ -21,8 +21,8 @@ angular.module('app').service('Connect4', function(Game) {
         }
     };
     this.move = (coord) => {
-        console.log("coord: " + coord);
-        console.log("activePlayer: " + this.activePlayer);
+        // console.log("coord: " + coord);
+        // console.log("activePlayer: " + this.activePlayer);
         if(this.moveHelper(coord) === true) {
             // move is legal:
             //   - update board (done by moveHelper)
@@ -37,7 +37,8 @@ angular.module('app').service('Connect4', function(Game) {
             // move is not legal:
             //   - do nothing
         }
-        console.log(this.board);
+        // console.log(this.board);
+        return this.board;
     };
     this.moveHelper = (coord) => {
         var boardCol = this.board[coord];

@@ -2,7 +2,7 @@
 function twoPlayerEntryFormController($scope, Game) {
     $scope.Game = Game;
     $scope.$watch("Game.isPreGame", () => {
-        this.isShowForm = $scope.Game.isPreGame;
+        this.isShow = $scope.Game.isPreGame;
         // auto-inits since we're not doing newVal !== oldVal check,
         // plus makes it easier for future features where we may not want
         // to immediately show entry form

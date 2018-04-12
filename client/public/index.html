@@ -9,11 +9,13 @@
     </head>
     <body>
 
-        <two-player-entry-form></two-player-entry-form>
+        <!-- <two-player-entry-form></two-player-entry-form> -->
 
-        <c4-board></c4-board>
-
-        <two-player-interface></two-player-interface>
+        <div>
+            <!-- hack: margin auto to center horizontally wasn't working on c4-board svg -->
+            <c4-board></c4-board>
+            <two-player-turn-display></two-player-turn-display>
+        </div>
 
         <script src='bundle.js'></script>
 
