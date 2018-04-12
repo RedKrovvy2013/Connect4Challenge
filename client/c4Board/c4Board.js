@@ -29,7 +29,7 @@ angular.module('app').directive('c4Board', function($timeout) {
 
             var yScale = d3.scaleLinear()
                 .domain([0, 6])
-                .range([topMargin, totalHeight]);
+                .range([totalHeight, topMargin]);
 
             var board = d3.select('svg.c4-board')
                 .attr('width', width)
@@ -93,11 +93,25 @@ angular.module('app').directive('c4Board', function($timeout) {
                 return colIndex;
             }
 
+
+
             var coinGPrefix = "c4-board__coinsG";
             var coinsG1 = board.append('g')
                 .attr("class", `${coinGPrefix}-p1`);
             var coinsG2 = board.append('g')
                 .attr("class", `${coinGPrefix}-p2`);
+
+            initCoinGroups(coinsG1);
+            initCoinGroups(coinsG2);
+            function initCoinGroups(coinsG) {
+                coinsG.selectAll("g")
+                    .data([1,2,3,4,5,6,7]) // can be any data, as long as length is 7
+                    .enter().append("g")
+                    .attr("transform", function(d, i) {
+                        return `translate( ${xScale(i+.5)} )`;
+                    })
+            }
+
             $scope.update = function(boardData) {
 
                 var p1Data = [];
@@ -126,24 +140,28 @@ angular.module('app').directive('c4Board', function($timeout) {
                         coinsG = coinsG1;
                     if(playerIdStr==="p2")
                         coinsG = coinsG2;
-                    coinsG.selectAll("g").remove();
+
                     coinsG.selectAll("g")
                         .data(playerData)
-                        .enter().append("g")
-                        .attr("transform", function(d, i) {
-                            return `translate( ${xScale(i+.5)} )`;
-                        })
                         .selectAll("circle")
                         .data((d)=>d)
                         .enter().append("circle")
                         .attr("class", `c4-board__coin--${playerIdStr}`)
+                        .attr("r", 23)
+                        .attr("cy", function(d) {
+                            return yScale(d + 6.5);
+                        })
+                        .transition()
+                        .duration(500)
+                        .ease(d3.easeSinIn)
                         .attr("cy", function(d) {
                             return yScale(d + .5);
                         })
-                        .attr("r", 23);
+
                 }
 
             };
+
         }
     };
 });
