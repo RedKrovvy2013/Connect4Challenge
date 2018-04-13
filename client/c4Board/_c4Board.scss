@@ -1,4 +1,3 @@
-
 .c4-board {
 
     margin-bottom: $cell-height * .25;
@@ -11,24 +10,12 @@
     &__mask-bg {
         fill: white;
     }
-
-    &__coin--p1 {
-        fill: $red-straight;
-    }
-    &__coin--p2 {
-        fill: $blue-straight;
+    &__circle-mask {
+        fill: black;
     }
 
-}
+    &__frost-top {
+        fill: white;
+    }
 
-rect {
-    fill: black;
-}
-
-circle {
-    fill: black;
-}
-
-path {
-    fill-rule: evenodd;
 }

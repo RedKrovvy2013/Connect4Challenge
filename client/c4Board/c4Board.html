@@ -1,4 +1,18 @@
 <svg class="c4-board" ng-show="$ctrl.isShow">
+    <defs>
+        <linearGradient id="red-coin-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#921B1B"/>
+            <stop offset="100%" stop-color="#F03030"/>
+        </linearGradient>
+        <linearGradient id="blue-coin-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#1520A8"/>
+            <stop offset="100%" stop-color="#2037FF"/>
+        </linearGradient>
+        <linearGradient id="hole-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="white" stop-opacity="0"/>
+            <stop offset="100%" stop-color="white"/>
+        </linearGradient>
+    </defs>
     <mask class="c4-board__mask" id="c4-board__mask">
         <rect class="c4-board__mask-bg" x="0" y="0" width="100%" height="100%"></rect>
     </mask>

@@ -12,6 +12,7 @@ function c4BoardController($scope, Connect4, Game) {
         if(Game.isPreGame)
             $scope.resetCoinGroups();
     });
+    // Game.init("Jen", "Mike");
 }
 
 angular.module('app').directive('c4Board', function($timeout) {
@@ -35,7 +36,7 @@ angular.module('app').directive('c4Board', function($timeout) {
 
             var yScale = d3.scaleLinear()
                 .domain([0, 6])
-                .range([totalHeight, topMargin]);
+                .range([height, 0]);
 
             var board = d3.select('svg.c4-board')
                 .attr('width', width)
@@ -51,11 +52,6 @@ angular.module('app').directive('c4Board', function($timeout) {
                     }
                 }
 
-                var backingPathCoords = [
-                    {x:0, y:topMargin}, {x:width, y:topMargin},
-                    {x:width, y:totalHeight}, {x:0, y:totalHeight}
-                ];
-
                 var doLine = d3.line()
                     .x(function(d) {
                       return d.x;
@@ -64,17 +60,41 @@ angular.module('app').directive('c4Board', function($timeout) {
                       return d.y;
                     });
 
-                board.append("path")
-                    .attr("class", "c4-board__backing")
-                    .attr("d", doLine(backingPathCoords))
+                var boardBackingG = board.append("g")
+                    .attr("class", "c4-board__backing-g")
+                    .attr("transform", "translate(0, " + topMargin + ")")
                     .attr("mask", "url(#c4-board__mask)");
+
+                boardBackingG.append("path")
+                    .attr("class", "c4-board__backing")
+                    .attr("d", doLine( [{x:0, y:0}, {x:width, y:0}, {x:width, y:height}, {x:0, y:height}] ));
                     // NOTE: mask url must be id
+
+                boardBackingG.append("path")
+                    .attr("class", "c4-board__frost-top")
+                    .attr("d", doLine( [{x:0, y:0}, {x:width, y:0}, {x:width, y:1}, {x:0, y:1}] ));
+
+                boardBackingG
+                    .selectAll("circle")
+                    .data(boardHoles)
+                    .enter()
+                    .append("circle")
+                    .attr("class", "c4-board__circle-frosted")
+                    .attr("fill", "url(#hole-gradient)")
+                    .attr("cx", function(d) {
+                        return xScale(d.x);
+                    })
+                    .attr("cy", function(d) {
+                        return yScale(d.y);
+                    })
+                    .attr("r", 31);
 
                 board.select("#c4-board__mask")
                     .selectAll("circle")
                     .data(boardHoles)
                     .enter()
                     .append("circle")
+                    .attr("class", "c4-board__circle-mask")
                     .attr("cx", function(d) {
                         return xScale(d.x);
                     })
@@ -99,12 +119,12 @@ angular.module('app').directive('c4Board', function($timeout) {
                 return colIndex;
             }
 
-
-
             var coinGPrefix = "c4-board__coinsG";
             var coinsG1 = board.append('g')
+                .attr("transform", "translate(0, " + topMargin + ")")
                 .attr("class", `${coinGPrefix}-p1`);
             var coinsG2 = board.append('g')
+                .attr("transform", "translate(0, " + topMargin + ")")
                 .attr("class", `${coinGPrefix}-p2`);
 
             initCoinGroups(coinsG1);
@@ -166,6 +186,10 @@ angular.module('app').directive('c4Board', function($timeout) {
                         .data((d)=>d)
                         .enter().append("circle")
                         .attr("class", `c4-board__coin--${playerIdStr}`)
+                        .attr("fill", (function() {
+                            if(playerIdStr==="p1") return 'url(#red-coin-gradient)';
+                            if(playerIdStr==="p2") return 'url(#blue-coin-gradient)';
+                        })())
                         .attr("r", 23)
                         .attr("cy", function(d) {
                             return yScale(d + 6.5);
