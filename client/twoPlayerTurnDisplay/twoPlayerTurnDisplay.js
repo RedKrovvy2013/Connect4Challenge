@@ -1,8 +1,12 @@
 
 function Connect4TwoPlayerTurnDisplayController($scope, Game, Connect4) {
     $scope.Game = Game;
-    $scope.$watch("Game.isPreGame", () => {
+    $scope.$watch("Game.isPreGame", (newVal, oldVal) => {
         this.isShow = !Game.isPreGame;
+        if(oldVal===true) {
+            this.p1Name = Connect4.p1Name;
+            this.p2Name = Connect4.p2Name;
+        }
     });
     $scope.Connect4 = Connect4;
     $scope.$watch("Connect4.activePlayer", () => {

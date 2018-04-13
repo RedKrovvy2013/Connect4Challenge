@@ -1,0 +1,16 @@
+
+.u-btn {
+
+    display: block;
+    @include frost;
+    border: 1px solid white !important;
+    height: $cell-height !important;
+    padding: 0 $cell-height/2 !important;
+    @include base-margin;
+
+    @include centercenter;
+
+    &__header {
+        @include grey-gradient;
+    }
+}

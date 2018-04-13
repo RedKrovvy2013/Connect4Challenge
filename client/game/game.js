@@ -3,6 +3,7 @@ angular.module('app').service('Game', function() {
     this.isPreGame = true;
     this.isPlaying = false;
     this.isPostGame = false;
+    this.winnerName = '';
     this.insertGame = (game) => {
         this.game = game;
     };
@@ -12,7 +13,7 @@ angular.module('app').service('Game', function() {
         this.isPreGame = false;
     };
     this.handleWinGame = (winnerName) => {
-        console.log(`${winnerName} wins!`);
+        this.winnerName = winnerName;
         this.isPlaying = false;
         this.isPostGame = true;
     };

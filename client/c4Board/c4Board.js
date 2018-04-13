@@ -6,7 +6,12 @@ function c4BoardController($scope, Connect4, Game) {
         $scope.update(newBoard);
         // NOTE: could observe board changing, but this seems better
     };
-    Game.init("Jen", "Mike");
+    $scope.Game = Game;
+    $scope.$watch("Game.isPreGame", () => {
+        this.isShow = !Game.isPreGame;
+        if(Game.isPreGame)
+            $scope.resetCoinGroups();
+    });
 }
 
 angular.module('app').directive('c4Board', function($timeout) {
@@ -15,6 +20,7 @@ angular.module('app').directive('c4Board', function($timeout) {
         scope: {},
         template: require('./c4Board.html'),
         controller: c4BoardController,
+        controllerAs: "$ctrl",
         link: function($scope, elem, attrs, ctrl) {
 
             var width = 700;
@@ -110,6 +116,19 @@ angular.module('app').directive('c4Board', function($timeout) {
                     .attr("transform", function(d, i) {
                         return `translate( ${xScale(i+.5)} )`;
                     })
+            }
+
+            $scope.resetCoinGroups = function() {
+                resetCoinGroup(coinsG1);
+                resetCoinGroup(coinsG2);
+                function resetCoinGroup(coinsG) {
+                    coinsG.selectAll("g")
+                        .data([[],[],[],[],[],[],[]])
+                        .selectAll("circle")
+                        .data((d)=>d)
+                        .exit()
+                        .remove()
+                }
             }
 
             $scope.update = function(boardData) {

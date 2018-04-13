@@ -22,6 +22,8 @@ angular.module('app').directive('twoPlayerEntryForm', function() {
         link: function($scope, elem, attrs, ctrl) {
             $scope.onSubmit = function() {
                 ctrl.init($scope.p1Name, $scope.p2Name);
+                $scope.p1Name = '';
+                $scope.p2Name = '';
             };
         }
     };

@@ -1,2 +1,43 @@
 
-// filler
+.two-p-entry-form {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    @include centercenter;
+
+    &__form {
+        @include frost;
+        @include frostTop;
+    }
+
+    &__input {
+        @include frost;
+        border: none;
+        padding: $cell-height / 9;
+        height: $cell-height / 3;
+
+        font-family: 'Arial';
+
+        display: block;
+        width: 30rem;
+        margin: 0 auto;
+
+    }
+
+    &__label {
+        @include base-margin;
+    }
+
+    &__label--blue {
+        @include blue-gradient;
+    }
+    &__label--red {
+        @include red-gradient;
+    }
+
+
+}

@@ -6,6 +6,7 @@ var app = angular.module('app', []);
 require('./c4Board/c4Board');
 require('./twoPlayerEntryForm/twoPlayerEntryForm');
 require('./twoPlayerTurnDisplay/twoPlayerTurnDisplay');
+require('./winnerDisplay/winnerDisplay');
 
 require('./game/game');
 require('./game/connect4');

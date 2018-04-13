@@ -1,0 +1,20 @@
+
+.winner-display {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    @include centercenter;
+    @include frost;
+
+    &__header {
+        min-width: 40rem;
+        text-align: center;
+        @include red-gradient;
+        margin: $cell-height;
+    }
+
+}

@@ -7,8 +7,22 @@
     }
 }
 
+@mixin centercenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 @mixin frost {
     background-color: $frost-color;
+}
+@mixin frostTop {
+    border-top: 1px solid white;
+}
+
+@mixin base-margin {
+    margin: $cell-height/4 $cell-height/2;
 }
 
 @mixin grey-gradient {

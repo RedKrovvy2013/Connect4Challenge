@@ -1,21 +1,25 @@
 <div class="two-p-entry-form" ng-show="$ctrl.isShow">
+
     <form class="two-p-entry-form__form" ng-submit="onSubmit()">
 
-        <h3 class="two-p-entry-form__label">
-            Player 1:
-        </h3>
-        <input type="text" class="two-p-entry-form__input"
-               ng-model="p1Name">
+            <h1 class="two-p-entry-form__label two-p-entry-form__label--red">
+                Player 1:
+            </h1>
+            <input type="text" class="two-p-entry-form__input" autofocus
+                   ng-model="p1Name">
 
-        <h3 class="two-p-entry-form__label">
-            Player 2:
-        </h3>
-        <input type="text" class="two-p-entry-form__input"
-               ng-model="p2Name">
+            <h1 class="two-p-entry-form__label two-p-entry-form__label--blue">
+                Player 2:
+            </h1>
+            <input type="text" class="two-p-entry-form__input"
+                   ng-model="p2Name">
 
-        <button type="submit" class="two-p-entry-form__btn-submit">
-            Start
-        </button>
+            <button type="submit" class="two-p-entry-form__btn-submit u-btn">
+                <h1 class="two-p-entry-form__btn-submit-header u-btn__header">
+                    Start
+                </h1>
+            </button>
 
     </form>
+
 </div>
