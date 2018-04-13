@@ -1,8 +1,9 @@
 var d3 = require('d3');
 
 function c4BoardController($scope, Connect4, Game) {
+    this.nextTurnDelay = 650;
     this.move = function(coord) {
-        var newBoard = Connect4.move(coord);
+        var newBoard = Connect4.move(coord, this.nextTurnDelay);
         $scope.update(newBoard);
         // NOTE: could observe board changing, but this seems better
     };
@@ -120,10 +121,10 @@ angular.module('app').directive('c4Board', function($timeout) {
             }
 
             var coinGPrefix = "c4-board__coinsG";
-            var coinsG1 = board.append('g')
+            var coinsG1 = board.insert('g', ":first-child")
                 .attr("transform", "translate(0, " + topMargin + ")")
                 .attr("class", `${coinGPrefix}-p1`);
-            var coinsG2 = board.append('g')
+            var coinsG2 = board.insert('g', ":first-child")
                 .attr("transform", "translate(0, " + topMargin + ")")
                 .attr("class", `${coinGPrefix}-p2`);
 
@@ -195,7 +196,7 @@ angular.module('app').directive('c4Board', function($timeout) {
                             return yScale(d + 6.5);
                         })
                         .transition()
-                        .duration(500)
+                        .duration(ctrl.nextTurnDelay)
                         .ease(d3.easeSinIn)
                         .attr("cy", function(d) {
                             return yScale(d + .5);

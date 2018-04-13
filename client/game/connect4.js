@@ -1,5 +1,5 @@
 
-angular.module('app').service('Connect4', function(Game) {
+angular.module('app').service('Connect4', function(Game, $timeout) {
     Game.insertGame(this);
     this.p1Name = '';
     this.p2Name = '';
@@ -20,24 +20,28 @@ angular.module('app').service('Connect4', function(Game) {
             }
         }
     };
-    this.move = (coord) => {
-        // console.log("coord: " + coord);
-        // console.log("activePlayer: " + this.activePlayer);
+    this.isTurningFlag = false;
+    this.move = (coord, nextTurnDelay) => {
+        if(this.isTurningFlag)
+            return this.board;
         if(this.moveHelper(coord) === true) {
             // move is legal:
             //   - update board (done by moveHelper)
-            if(this.checkForWin()) {
-                var winnerName = this.activePlayer === 1 ? this.p1Name : this.p2Name;
-                Game.handleWinGame(winnerName);
-            } else {
-                this.activePlayer === 1 ? this.activePlayer = 2 :
-                                          this.activePlayer = 1;
-            }
+            this.isTurningFlag = true;
+            $timeout(()=> {
+                this.isTurningFlag = false;
+                if(this.checkForWin()) {
+                    var winnerName = this.activePlayer === 1 ? this.p1Name : this.p2Name;
+                    Game.handleWinGame(winnerName);
+                } else {
+                    this.activePlayer === 1 ? this.activePlayer = 2 :
+                                              this.activePlayer = 1;
+                }
+            }, nextTurnDelay);
         } else {
             // move is not legal:
             //   - do nothing
         }
-        // console.log(this.board);
         return this.board;
     };
     this.moveHelper = (coord) => {
