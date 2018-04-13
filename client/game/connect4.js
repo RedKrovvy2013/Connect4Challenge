@@ -58,6 +58,8 @@ angular.module('app').service('Connect4', function(Game) {
                 // check for diagonal win:
                 if( this.checkForWinHelper({x, y}, (coord)=>{++coord.x,++coord.y}) )
                     return true;
+                if( this.checkForWinHelper({x, y}, (coord)=>{--coord.x,++coord.y}) )
+                    return true;
                 // check for horizontal win:
                 if( this.checkForWinHelper({x, y}, (coord)=>{++coord.x}) )
                     return true;
@@ -79,7 +81,8 @@ angular.module('app').service('Connect4', function(Game) {
             ++tallyMap[cellValue];
 
             coordMoveFx(coord);
-            // could be up+right | up | right
+            // could be up+right | up+left | up | right
+            if(coord.x < 0) break;
             if(coord.x > 6) break;
             if(coord.y > 5) break;
         }
