@@ -20,6 +20,9 @@ angular.module('app').service('Connect4', function(Game, $timeout) {
             }
         }
     };
+    this.getFoo = () => {
+        return 'foo'
+    }
     this.isTurningFlag = false;
     this.move = (coord, nextTurnDelay) => {
         if(this.isTurningFlag)
