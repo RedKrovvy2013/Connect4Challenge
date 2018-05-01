@@ -27,7 +27,7 @@ describe('Connect4 Service', function() {
 
     beforeEach(inject(function(_Connect4_) {
         Connect4 = _Connect4_
-
+        Connect4.init()
     }))
 
     describe('init()', () => {
@@ -53,6 +53,21 @@ describe('Connect4 Service', function() {
             Connect4.isTurningFlag = true
             Connect4.move()
             expect(spy.called).to.be.false
+        })
+    })
+
+    describe('checkForWin()', () => {
+        it('should return true for a board with a win condition', () => {
+            for(var i=0; i<4; ++i) {
+                Connect4.board[i][0] = 1 // 1 is for player1-owned coords
+            }
+            var result = Connect4.checkForWin()
+            expect(result).to.be.true
+        })
+        it('should return false for a board with no win condition', () => {
+            // default board has no win condtion..
+            var result = Connect4.checkForWin()
+            expect(result).to.be.false
         })
     })
 
