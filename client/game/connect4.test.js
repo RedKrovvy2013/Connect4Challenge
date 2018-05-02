@@ -9,26 +9,40 @@ var {module, inject} = angular.mock
 describe('Connect4 Service', function() {
 
     var Connect4
-    // var GameSpy
-    // var sandbox
-    // var Game
+    var Game
 
     beforeEach(module('app'))
 
-    // beforeEach(module(function($provide) {
-    //     $provide.value("Game", { insertGame: GameSpy })
-    // }))
-    // beforeEach(angular.mock.inject(function(_Connect4_, $injector) {
-    //     Connect4 = _Connect4_
-    //     sandbox = sinon.sandbox.create()
-    //     Game = $injector.get('Game')
-    //     sandbox.stub(Game, "insertGame")
-    // }))
-
+    // -------Spy Insertion Method 1--------
+    var sandbox
+    beforeEach(inject(function($injector) {
+        sandbox = sinon.createSandbox()
+        Game = $injector.get('Game')
+        sandbox.stub(Game, "insertGame")
+    }))
     beforeEach(inject(function(_Connect4_) {
         Connect4 = _Connect4_
         Connect4.init()
     }))
+    afterEach(function () {
+        sandbox.restore()
+    })
+
+    // -------Spy Insertion Method 2--------
+    // beforeEach(module(function($provide) {
+    //     $provide.value("Game", { insertGame: sinon.spy() })
+    // }))
+    // beforeEach(inject(function(_Connect4_, _Game_) {
+    //     Connect4 = _Connect4_
+    //     Game = _Game_
+    //     Connect4.init()
+    // }))
+
+    describe('Collaboration with Game service', () => {
+        it('should call "insertGame"', () => {
+            expect(Game.insertGame.called).to.be.true
+        })
+    })
 
     describe('init()', () => {
         it('should reset board subarrays to contain 0s', () => {
@@ -70,11 +84,5 @@ describe('Connect4 Service', function() {
             expect(result).to.be.false
         })
     })
-
-    // describe('Collaboration with Game service', () => {
-    //     it('should call "insertGame"', () => {
-    //         expect(Game.insertGame.called).to.be.true
-    //     })
-    // })
 
 })
