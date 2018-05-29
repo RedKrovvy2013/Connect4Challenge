@@ -1,4 +1,6 @@
 
+[Live Demo](http://www.mikecirone.com/connect4/)
+
     npm install
     node server/server.js
 
